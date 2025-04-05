@@ -25,4 +25,4 @@ type HelloWorldGrain() =
 
     interface IHelloWorldGrain with
         member this.SayHello(request: string) : Task<HelloWorldResult> =
-            Task.FromResult(HelloWorldResult.Failed "Error!!")
+            Task.FromResult(HelloWorldResult.Failed "Hello back")

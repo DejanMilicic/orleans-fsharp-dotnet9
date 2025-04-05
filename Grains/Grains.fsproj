@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <OutputType>Exe</OutputType>
-        <TargetFramework>net9.0</TargetFramework>
+        <TargetFramework>net8.0</TargetFramework>
     </PropertyGroup>
 
     <ItemGroup>
@@ -10,8 +10,10 @@
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="Microsoft.Orleans.Core.Abstractions" Version="9.0.1" />
-      <PackageReference Include="Microsoft.Orleans.Reminders" Version="9.0.1" />
+      <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
+      <PackageReference Include="Microsoft.Orleans.Core" Version="8.2.0" />
+      <PackageReference Include="Microsoft.Orleans.Core.Abstractions" Version="8.2.0" />
+      <PackageReference Include="Microsoft.Orleans.Reminders" Version="8.2.0" />
     </ItemGroup>
 
 </Project>
