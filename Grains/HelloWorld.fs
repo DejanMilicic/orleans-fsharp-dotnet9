@@ -12,17 +12,25 @@ type IYourReminderGrain =
 type ErrorMessage = string
 
 [<GenerateSerializer>]
+type HelloWorldRequest = 
+    | SayHello of string
+    | CountDown of int
+
+[<GenerateSerializer>]
 type HelloWorldResult =   
     | Failed of ErrorMessage
     | Completed of string
     
-    
 type IHelloWorldGrain = 
     inherit IGrainWithGuidKey
-    abstract member SayHello : string -> Task<HelloWorldResult>
+    abstract member SayHello : HelloWorldRequest -> Task<HelloWorldResult>
 type HelloWorldGrain() =
     inherit Grain()
 
     interface IHelloWorldGrain with
-        member this.SayHello(request: string) : Task<HelloWorldResult> =
-            Task.FromResult(HelloWorldResult.Failed "Hello back")
+        member this.SayHello(request: HelloWorldRequest) : Task<HelloWorldResult> =
+            match request with
+            | SayHello name -> 
+                Task.FromResult(HelloWorldResult.Completed $"You said {name} to me")
+            | CountDown count when count > 0 ->
+                Task.FromResult(HelloWorldResult.Completed $"Counting down: {count}")

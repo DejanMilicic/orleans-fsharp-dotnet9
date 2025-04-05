@@ -3,7 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Orleans.Configuration;
 
-[assembly: GenerateCodeForDeclaringAssembly(typeof(Grains.HelloWorldGrain))]
+[assembly: GenerateCodeForDeclaringAssembly(typeof(HelloWorldGrain))]
 public class Program
 {
     
@@ -28,6 +28,8 @@ public class Program
         
         var grainFactory = host.Services.GetRequiredService<IGrainFactory>();
         var grain = grainFactory.GetGrain<IHelloWorldGrain>(Guid.Empty);
-        var result = await grain.SayHello("Hello");
+        var result = await grain.SayHello(HelloWorldRequest.NewSayHello("hello"));
+
+        Console.WriteLine(result);
     }
 }
