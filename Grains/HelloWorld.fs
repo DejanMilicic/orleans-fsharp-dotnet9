@@ -1,5 +1,9 @@
 namespace Grains
 
+open System.Runtime.CompilerServices
+[<assembly: InternalsVisibleTo("Host")>]
+do()
+
 open System.Threading.Tasks
 open Orleans
 
